@@ -62,7 +62,6 @@
 
                     <td colspan="6">
                         <c:url var="addMoreProduct" value="shoppingPageAction">
-                            <c:param name="btAction" value="shopping"/>
                         </c:url>
                         <a href="${addMoreProduct}">Add more product!</a>
                     </td>
@@ -80,7 +79,6 @@
         <c:if test="${empty products}">
             <h3>You do not have any product in cart!</h3>
             <c:url var="addMoreProduct" value="shoppingPageAction">
-                <c:param name="btAction" value="shopping"/>
             </c:url>
             <a href="${addMoreProduct}">Shopping now!</a>
         </c:if>

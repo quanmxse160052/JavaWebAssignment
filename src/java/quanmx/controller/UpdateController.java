@@ -3,7 +3,6 @@ package quanmx.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Properties;
-import java.util.logging.Level;
 import javax.naming.NamingException;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -52,8 +51,8 @@ public class UpdateController extends HttpServlet {
                     RegistrationDAO dao = new RegistrationDAO();
                     boolean result = dao.updateUserInfor(username, newPassword, newRole);
                     if (result) {
-                        url = AppConstants.DispatchFeatures.SEARCH_LASTNAME_CONTROLLER + "?btAction=Search"
-                                + "&txtSearchValue="
+                        url = AppConstants.DispatchFeatures.SEARCH_LASTNAME_CONTROLLER 
+                                + "?txtSearchValue="
                                 + searchValue;
 
                     }
@@ -75,8 +74,8 @@ public class UpdateController extends HttpServlet {
                     LOGGER.warn("ADMIN: " + user.getUsername() + " modified " + username + " role");
                     boolean result = dao.updateUserInfor(username, newPassword, newRole);
                     if (result) {
-                        url = AppConstants.DispatchFeatures.SEARCH_LASTNAME_CONTROLLER + "?btAction=Search"
-                                + "&txtSearchValue="
+                        url = AppConstants.DispatchFeatures.SEARCH_LASTNAME_CONTROLLER
+                                + "?txtSearchValue="
                                 + searchValue;
                     }
 
@@ -85,8 +84,7 @@ public class UpdateController extends HttpServlet {
 
                     boolean result = dao.updateUserInfor(username, newPassword, newRole);
                     if (result) {
-                        url = AppConstants.DispatchFeatures.SEARCH_LASTNAME_CONTROLLER + "?btAction=Search"
-                                + "&txtSearchValue="
+                        url = AppConstants.DispatchFeatures.SEARCH_LASTNAME_CONTROLLER + "?txtSearchValue="
                                 + searchValue;
 
                     }

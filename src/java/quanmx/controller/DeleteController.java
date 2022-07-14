@@ -20,9 +20,9 @@ import quanmx.utils.AppConstants;
  * @author Dell
  */
 public class DeleteController extends HttpServlet {
-
+    
     private static final Logger LOGGER = Logger.getLogger(DeleteController.class);
-
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -30,11 +30,11 @@ public class DeleteController extends HttpServlet {
         String searchValue = request.getParameter("lastSearchValue");
         ServletContext context = request.getServletContext();
         Properties siteMaps = (Properties) context.getAttribute("SITEMAPS");
-
+        
         String urlRewriting = AppConstants.DeleteAccountFeatures.ERROR_PAGE;
         HttpSession session = request.getSession(false);
         RegistrationDTO user = (RegistrationDTO) session.getAttribute("USER");
-
+        
         try {
             //check role of user
             if (user.isRole() == false) {
@@ -46,12 +46,12 @@ public class DeleteController extends HttpServlet {
                     && deletedUser.isRole() == false) {
                 //1. call DAO
                 boolean result = dao.deleteByUsername(username);
+                LOGGER.warn("ADMIN " + user.getUsername() + " deleted user " + username);
                 //2. process result
                 if (result) {
                     //call Search function again by using url rewriting
                     urlRewriting = AppConstants.DispatchFeatures.SEARCH_LASTNAME_CONTROLLER
-                            + "?btAction=Search"
-                            + "&txtSearchValue=" + searchValue;
+                            + "?txtSearchValue=" + searchValue;
                 }//delete is sucessful
 
             }
@@ -59,14 +59,14 @@ public class DeleteController extends HttpServlet {
             LOGGER.error("DeleteController " + ex.getMessage());
         } catch (ClassNotFoundException ex) {
             LOGGER.error("DeleteController " + ex.getMessage());
-
+            
         } catch (NamingException ex) {
             LOGGER.error("DeleteController " + ex.getMessage());
-
+            
         } finally {
             response.sendRedirect(urlRewriting);
         }
-
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

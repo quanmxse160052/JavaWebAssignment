@@ -1,7 +1,6 @@
 package quanmx.controller;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +16,9 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import quanmx.cart.CartObject;
 import quanmx.cart.CartProduct;
-import quanmx.order.OrderDAO;
-import quanmx.orderdetail.OrderDetailDAO;
 import quanmx.product.ProductDAO;
 import quanmx.transaction.CheckOutTransaction;
 import quanmx.utils.AppConstants;
-import quanmx.utils.DBHelper;
 
 /**
  *
@@ -37,7 +33,6 @@ public class CheckOutController extends HttpServlet {
         ServletContext context = request.getServletContext();
         Properties siteMaps = (Properties) context.getAttribute("SITEMAPS");
         String url = AppConstants.CheckOutFeatures.VIEW_CART_PAGE;
-
         try {
             //1. get session
             HttpSession session = request.getSession(false);

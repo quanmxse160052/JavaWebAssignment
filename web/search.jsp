@@ -44,7 +44,7 @@
                             <th>Username</th>
                             <th>Password</th>
                             <th>Full name</th>
-                            <th>Role</th>
+                            <th>Admin</th>
                                 <c:if test="${role}">
                                 <th>Delete</th>
                                 </c:if>
@@ -75,20 +75,38 @@
                                     ${dto.fullName}
                                 </td>
                                 <td>
-                                    <input type="checkbox" name="chkAdmin" value="ON"
-                                           <c:if test="${dto.role}">
-                                               checked="checked"
-                                           </c:if>
-                                           />
+                                    <c:if test="${role}">
+                                        <input type="checkbox" name="chkAdmin" value="ON"
+                                               <c:if test="${dto.role}">
+                                                   checked="checked" 
+                                               </c:if>
+                                               <c:if test="${dto.username==sessionScope.USER.username}">
+                                                   disabled="disable" 
+                                               </c:if>
+                                               />
+                                        <c:if test="${dto.username==sessionScope.USER.username}">
+                                            <input type="hidden" name="chkAdmin" value="ON"/>
+                                        </c:if>
+                                    </c:if>
+
+                                    <c:if test="${role == false}">
+                                        <input type="checkbox" name="chkAdmin" value="ON" disabled="disable"
+                                               <c:if test="${dto.role}">
+                                                   checked="checked" 
+                                               </c:if>
+                                               />
+                                    </c:if>
+
                                 </td>
-                                <c:if test="${role}">
+                                <c:if test="${role }">
                                     <td>
                                         <c:url var="deleteLink" value="deleteAction">
-                                            <c:param name="btAction" value="delete"/>
                                             <c:param name="pk" value="${dto.username}"/>
                                             <c:param name="lastSearchValue" value="${param.txtSearchValue}"/>
                                         </c:url>
-                                        <a href="${deleteLink}">Delete</a>
+                                        <c:if test="${dto.username != sessionScope.USER.username}">
+                                            <a href="${deleteLink}">Delete</a>
+                                        </c:if>
                                     </td>
                                 </c:if>
                                 <c:if test="${dto.username==sessionScope.USER.username || role == true}">

@@ -25,7 +25,6 @@
         </c:if>
 
         <c:url var="viewCart" value="viewCartAction">
-            <c:param name="btAction" value="viewCart"/>
         </c:url>
         <a href="${viewCart}">View cart</a>
 
