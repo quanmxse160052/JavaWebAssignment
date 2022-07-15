@@ -18,7 +18,7 @@
 
     </head>
     <body>
-               <h1>Your cart</h1>
+        <h1>Your cart</h1>
         <c:if test="${not empty sessionScope.USER}">
             <form action="logoutAction" method="POST">
                 <input type="submit" name="btAction" value="Logout"/>
@@ -61,9 +61,8 @@
 
 
                     <td colspan="6">
-                        <c:url var="addMoreProduct" value="shoppingPageAction">
-                        </c:url>
-                        <a href="${addMoreProduct}">Add more product!</a>
+
+                        <a href="shoppingPageAction">Add more product!</a>
                     </td>
                     <td>
                         <input type="submit" value="Remove product(s)" name="btAction"/>
@@ -78,9 +77,7 @@
 
         <c:if test="${empty products}">
             <h3>You do not have any product in cart!</h3>
-            <c:url var="addMoreProduct" value="shoppingPageAction">
-            </c:url>
-            <a href="${addMoreProduct}">Shopping now!</a>
+            <a href="shoppingPageAction">Shopping now!</a>
         </c:if>
 
     </body>

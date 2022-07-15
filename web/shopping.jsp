@@ -24,9 +24,7 @@
             <a href="searchPage">Search Page</a>
         </c:if>
 
-        <c:url var="viewCart" value="viewCartAction">
-        </c:url>
-        <a href="${viewCart}">View cart</a>
+        <a href="viewCartAction">View cart</a>
 
 
         <c:if test="${empty sessionScope.USER}">

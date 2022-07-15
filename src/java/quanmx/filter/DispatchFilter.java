@@ -43,7 +43,7 @@ public class DispatchFilter implements Filter {
         int lastIndex = uri.lastIndexOf("/");
         String action = uri.substring(lastIndex + 1);
         try {
-            System.out.println(action);
+//            System.out.println(action);
             ServletContext context = request.getServletContext();
             Properties siteMaps = (Properties) context.getAttribute("SITEMAPS");
             String url = siteMaps.getProperty(action);

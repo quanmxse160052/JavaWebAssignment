@@ -58,13 +58,15 @@ public class AccessControllFilter implements Filter {
                 if (session != null && session.getAttribute("USER") != null) {
                     alreadyLogin = true;
                 }
-                if (url.equals("notAllowed") && !alreadyLogin) {
+                if (alreadyLogin) {
+                    chain.doFilter(request, response);
+                } else if (url.equals("notAllowed")) {
                     httpRes.sendRedirect(AppConstants.DispatchFeatures.LOGIN_PAGE);
-                } else {
+                } else if (url.equals("allow")) {
                     chain.doFilter(request, response);
                 }
             } else {
-                if (action.contains(".")) {
+                if (action.contains(".css")) {
                     chain.doFilter(request, response);
                 } else {
                     httpRes.sendRedirect(AppConstants.DispatchFeatures.ERROR_PAGE);
@@ -103,6 +105,7 @@ public class AccessControllFilter implements Filter {
 
     /**
      * Init method for this filter
+     *
      * @param filterConfig
      */
     @Override

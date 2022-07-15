@@ -52,7 +52,7 @@ public class LoginController extends HttpServlet {
 //                response.addCookie(cookie);
                 //Create session
                 HttpSession session = request.getSession(true);
-                session.setMaxInactiveInterval(60);
+                session.setMaxInactiveInterval(60*2);
                 session.setAttribute("USER", user);
 
             } //end if user is authenticated
