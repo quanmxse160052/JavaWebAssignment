@@ -40,11 +40,11 @@ public class SearchController extends HttpServlet {
 
             } //search value has existed
         } catch (SQLException ex) {
-            LOGGER.error("SearchController " + ex.getMessage());
+            LOGGER.error("SearchController _SQLException " + ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            LOGGER.error("SearchController " + ex.getMessage());
+            LOGGER.error("SearchController _ClassNotFoundException " + ex.getMessage());
         } catch (NamingException ex) {
-            LOGGER.error("SearchController " + ex.getMessage());
+            LOGGER.error("SearchController _NamingException " + ex.getMessage());
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);

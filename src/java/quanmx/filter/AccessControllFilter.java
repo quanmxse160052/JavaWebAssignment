@@ -8,7 +8,6 @@ import java.util.Properties;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
@@ -54,10 +53,7 @@ public class AccessControllFilter implements Filter {
             String url = accessControll.getProperty(action);
             if (url != null) {
                 HttpSession session = httpReq.getSession(false);
-                boolean alreadyLogin = false;
-                if (session != null && session.getAttribute("USER") != null) {
-                    alreadyLogin = true;
-                }
+                boolean alreadyLogin = session != null && session.getAttribute("USER") != null;
                 if (alreadyLogin) {
                     chain.doFilter(request, response);
                 } else if (url.equals("notAllowed")) {

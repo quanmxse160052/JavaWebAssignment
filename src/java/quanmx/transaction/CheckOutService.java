@@ -15,16 +15,16 @@ import quanmx.utils.DBHelper;
  *
  * @author Dell
  */
-public class CheckOutTransaction implements Serializable {
+public class CheckOutService implements Serializable {
 
-    private final Logger LOGGER = Logger.getLogger(CheckOutTransaction.class);
+    private final Logger LOGGER = Logger.getLogger(CheckOutService.class);
     private List<CartProduct> productList;
 
-    public CheckOutTransaction(List<CartProduct> productList) {
+    public CheckOutService(List<CartProduct> productList) {
         this.productList = productList;
     }
 
-    public boolean execute() throws SQLException {
+    public boolean execute() throws SQLException, ClassNotFoundException, NamingException {
         boolean completed = false;
         Connection connection = null;
         try {
@@ -52,6 +52,8 @@ public class CheckOutTransaction implements Serializable {
                 connection.rollback();
                 LOGGER.error("CheckOutTransaction " + ex.getMessage());
             }
+            throw ex;
+
         } finally {
             if (connection != null) {
                 connection.close();

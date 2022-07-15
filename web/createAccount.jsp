@@ -35,14 +35,14 @@
                 </font>
                 <br/>
             </c:if>
-            Password* <input type="text" name="txtPassword" value="" /> e.g 6-30 chars <br/>
+            Password* <input type="password" name="txtPassword" value="" /> e.g 6-30 chars <br/>
             <c:if test="${not empty errors.passwordLengthErr}">
                 <font color="red">
                 ${errors.passwordLengthErr}
                 </font>
                 <br/>
             </c:if>
-            Confirm* <input type="text" name="txtConfirm" value="" /><br/>
+            Confirm* <input type="password" name="txtConfirm" value="" /><br/>
             <c:if test="${not empty errors.confirmNotMatchErr}">
                 <font color="red">
                 ${errors.confirmNotMatchErr}

@@ -51,7 +51,7 @@ public class UpdateController extends HttpServlet {
                     RegistrationDAO dao = new RegistrationDAO();
                     boolean result = dao.updateUserInfor(username, newPassword, newRole);
                     if (result) {
-                        url = AppConstants.DispatchFeatures.SEARCH_LASTNAME_CONTROLLER 
+                        url = AppConstants.DispatchFeatures.SEARCH_LASTNAME_CONTROLLER
                                 + "?txtSearchValue="
                                 + searchValue;
 
@@ -71,7 +71,7 @@ public class UpdateController extends HttpServlet {
                     LOGGER.warn("ADMIN: " + user.getUsername() + " attempted to modify his/her role");
                 }//end if admin modifies his/her role
                 else if (!user.getUsername().equals(username) && newRole == null) {
-                    LOGGER.warn("ADMIN: " + user.getUsername() + " modified " + username + " role");
+                    LOGGER.warn("ADMIN: " + user.getUsername() + " modified " + username + " infor");
                     boolean result = dao.updateUserInfor(username, newPassword, newRole);
                     if (result) {
                         url = AppConstants.DispatchFeatures.SEARCH_LASTNAME_CONTROLLER
@@ -93,14 +93,14 @@ public class UpdateController extends HttpServlet {
 
         } catch (ClassNotFoundException ex) {
 
-            LOGGER.error("UpdateController " + ex.getMessage());
+            LOGGER.error("UpdateController _ClassNotFoundException " + ex.getMessage());
         } catch (SQLException ex) {
 
-            LOGGER.error("UpdateController " + ex.getMessage());
+            LOGGER.error("UpdateController _SQLException " + ex.getMessage());
 
         } catch (NamingException ex) {
 
-            LOGGER.error("UpdateController " + ex.getMessage());
+            LOGGER.error("UpdateController _NamingException " + ex.getMessage());
 
         } finally {
             response.sendRedirect(url);

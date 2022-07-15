@@ -15,7 +15,9 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
+import quanmx.utils.AppConstants;
 
 /**
  *
@@ -48,8 +50,15 @@ public class DispatchFilter implements Filter {
             Properties siteMaps = (Properties) context.getAttribute("SITEMAPS");
             String url = siteMaps.getProperty(action);
             if (url != null) {
-                RequestDispatcher rd = request.getRequestDispatcher(url);
-                rd.forward(request, response);
+                HttpSession session = httpReq.getSession(false);
+                boolean alreadyLogin = session != null && session.getAttribute("USER") != null;
+                if (alreadyLogin && action.equals(AppConstants.DispatchFeatures.LOGIN_PAGE)) {
+                    httpRes.sendRedirect(AppConstants.DispatchFeatures.SEARCH_PAGE);
+                } else {
+                    RequestDispatcher rd = request.getRequestDispatcher(url);
+                    rd.forward(request, response);
+                }
+
             } else {
                 chain.doFilter(request, response);
             }
@@ -84,6 +93,7 @@ public class DispatchFilter implements Filter {
 
     /**
      * Init method for this filter
+     *
      * @param filterConfig
      */
     @Override

@@ -61,11 +61,11 @@ public class LoginController extends HttpServlet {
         } catch (SQLException ex) {
 //            ex.printStackTrace();
 //            log("LoginController " + ex.getMessage());
-            LOGGER.error("LoginController " + ex.getMessage());
+            LOGGER.error("LoginController _SQLException " + ex.getMessage());
         } catch (ClassNotFoundException ex) {
 //            ex.printStackTrace();
 //            log("LoginController " + ex.getMessage());
-            LOGGER.error("LoginController " + ex.getMessage());
+            LOGGER.error("LoginController _ClassNotFoundException " + ex.getMessage());
 
         } catch (NamingException ex) {
 //            ex.printStackTrace();

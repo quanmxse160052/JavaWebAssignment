@@ -56,12 +56,12 @@ public class DeleteController extends HttpServlet {
 
             }
         } catch (SQLException ex) {
-            LOGGER.error("DeleteController " + ex.getMessage());
+            LOGGER.error("DeleteController _SQLException " + ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            LOGGER.error("DeleteController " + ex.getMessage());
+            LOGGER.error("DeleteController _ClassNotFoundException " + ex.getMessage());
             
         } catch (NamingException ex) {
-            LOGGER.error("DeleteController " + ex.getMessage());
+            LOGGER.error("DeleteController _NamingException " + ex.getMessage());
             
         } finally {
             response.sendRedirect(urlRewriting);

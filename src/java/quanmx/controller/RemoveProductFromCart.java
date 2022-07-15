@@ -1,7 +1,6 @@
 package quanmx.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Map;
 import java.util.Properties;
 import javax.servlet.ServletContext;
@@ -55,7 +54,7 @@ public class RemoveProductFromCart extends HttpServlet {
                 }
             }
         } catch (NumberFormatException ex) {
-            LOGGER.warn("RemoveProductFromCart " + ex.getMessage());
+            LOGGER.warn("RemoveProductFromCart _NumberFormatException " + ex.getMessage());
         } finally {
             //9. return to cart page after remove product
             response.sendRedirect(url);

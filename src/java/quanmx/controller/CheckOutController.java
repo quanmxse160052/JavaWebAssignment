@@ -17,7 +17,7 @@ import org.apache.log4j.Logger;
 import quanmx.cart.CartObject;
 import quanmx.cart.CartProduct;
 import quanmx.product.ProductDAO;
-import quanmx.transaction.CheckOutTransaction;
+import quanmx.transaction.CheckOutService;
 import quanmx.utils.AppConstants;
 
 /**
@@ -54,7 +54,7 @@ public class CheckOutController extends HttpServlet {
                             productList.add(product);
                         }
                         //Create a transaction
-                        CheckOutTransaction transaction = new CheckOutTransaction(productList);
+                        CheckOutService transaction = new CheckOutService(productList);
                         boolean result = transaction.execute();
                         if (result) {
                             session.removeAttribute("CART");
@@ -68,16 +68,16 @@ public class CheckOutController extends HttpServlet {
         } catch (SQLException ex) {
 //            ex.printStackTrace();
 //            log("CheckOutController " + ex.getMessage());
-            LOGGER.error("CheckOutController " + ex.getMessage());
+            LOGGER.error("CheckOutController _SQLException " + ex.getMessage());
         } catch (ClassNotFoundException ex) {
 //            ex.printStackTrace();
 //            log("CheckOutController " + ex.getMessage());
-            LOGGER.error("CheckOutController " + ex.getMessage());
+            LOGGER.error("CheckOutController _ClassNotFoundException " + ex.getMessage());
 
         } catch (NamingException ex) {
 //            ex.printStackTrace();
 //            log("CheckOutController " + ex.getMessage());
-            LOGGER.error("CheckOutController " + ex.getMessage());
+            LOGGER.error("CheckOutController _NamingException " + ex.getMessage());
 
         } finally {
             response.sendRedirect(url);

@@ -37,12 +37,12 @@ public class ShoppingPageController extends HttpServlet {
             List<ProductDTO> products = dao.getFullProductList();
             request.setAttribute("PRODUCTS", products);
         } catch (SQLException ex) {
-            LOGGER.error("ShoppingPageController " + ex.getMessage());
+            LOGGER.error("ShoppingPageController _SQLException" + ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            LOGGER.error("ShoppingPageController " + ex.getMessage());
+            LOGGER.error("ShoppingPageController _ClassNotFoundException" + ex.getMessage());
 
         } catch (NamingException ex) {
-            LOGGER.error("ShoppingPageController " + ex.getMessage());
+            LOGGER.error("ShoppingPageController _NamingException" + ex.getMessage());
 
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);

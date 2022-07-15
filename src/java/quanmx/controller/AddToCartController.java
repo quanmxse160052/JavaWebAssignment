@@ -43,7 +43,7 @@ public class AddToCartController extends HttpServlet {
             url = AppConstants.AddToCartFeatures.SHOPPING_PAGE;
             
         } catch (NumberFormatException ex) {
-            LOGGER.error("AddToCartController " + ex.getMessage());
+            LOGGER.error("AddToCartController _NumberFormatException " + ex.getMessage());
         } finally {
             response.sendRedirect(url);
         }

@@ -27,6 +27,8 @@ public class AppConstants {
         public static final String CHECK_OUT_CONTROLLER = "checkOutAction";
         public static final String CREATE_NEW_ACCOUNT_CONTROLLER = "createNewAccountAction";
         public static final String ERROR_PAGE = "errorPage";
+        public static final String SEARCH_PAGE = "searchPage";
+
     }
 
     public class AddToCartFeatures {

@@ -75,12 +75,12 @@ public class CreateNewAccountController extends HttpServlet {
                 errors.setUsernameIsExisted(username + " existed!");
                 request.setAttribute("CREATE_ERROR", errors);
             }
-            LOGGER.warn("CreateAccountController _SQL " + msg);
+            LOGGER.warn("CreateAccountController _SQLException " + msg);
         } catch (ClassNotFoundException ex) {
-            LOGGER.error("CreateAccountController _SQL " + ex.getMessage());
+            LOGGER.error("CreateAccountController _ClassNotFoundException " + ex.getMessage());
 
         } catch (NamingException ex) {
-            LOGGER.error("CreateAccountController _SQL " + ex.getMessage());
+            LOGGER.error("CreateAccountController _NamingException " + ex.getMessage());
 
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);

@@ -58,14 +58,14 @@ public class ViewCartController extends HttpServlet {
             }
         } catch (SQLException ex) {
 
-            LOGGER.error("ViewCartController " + ex.getMessage());
+            LOGGER.error("ViewCartController _SQLException " + ex.getMessage());
         } catch (ClassNotFoundException ex) {
 
-            LOGGER.error("ViewCartController " + ex.getMessage());
+            LOGGER.error("ViewCartController _ClassNotFoundException " + ex.getMessage());
 
         } catch (NamingException ex) {
 
-            LOGGER.error("ViewCartController " + ex.getMessage());
+            LOGGER.error("ViewCartController _NamingException " + ex.getMessage());
 
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
