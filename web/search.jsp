@@ -104,7 +104,7 @@
                                             <c:param name="pk" value="${dto.username}"/>
                                             <c:param name="lastSearchValue" value="${param.txtSearchValue}"/>
                                         </c:url>
-                                        <c:if test="${dto.username != sessionScope.USER.username}">
+                                        <c:if test="${dto.username != sessionScope.USER.username && dto.role == false}">
                                             <a href="${deleteLink}">Delete</a>
                                         </c:if>
                                     </td>
